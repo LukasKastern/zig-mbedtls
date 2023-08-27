@@ -27,6 +27,7 @@ pub fn create(b: *Builder, target: std.zig.CrossTarget, optimize: std.builtin.Op
     });
     ret.addIncludePath(.{ .path = include_dir });
     ret.addIncludePath(.{ .path = library_include });
+    ret.installHeadersDirectory(include_dir, "");
 
     // not sure why, but mbedtls has runtime issues when it's not built as
     // release-small or with the -Os flag, definitely need to figure out what's
