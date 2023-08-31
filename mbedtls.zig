@@ -32,7 +32,7 @@ pub fn create(b: *Builder, target: std.zig.CrossTarget, optimize: std.builtin.Op
     // not sure why, but mbedtls has runtime issues when it's not built as
     // release-small or with the -Os flag, definitely need to figure out what's
     // going on there
-    ret.addCSourceFiles(srcs, &.{"-Os"});
+    ret.addCSourceFiles(srcs, &.{ "-Os", "-DMBEDTLS_CONFIG_FILE=\"" ++ root_path ++ "mbedtls/configs/config-ccm-psk-tls1_2.h\"" });
     ret.linkLibC();
 
     if (target.isWindows())
