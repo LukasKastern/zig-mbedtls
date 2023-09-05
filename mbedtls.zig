@@ -35,8 +35,8 @@ pub fn create(b: *Builder, target: std.zig.CrossTarget, optimize: std.builtin.Op
     ret.addCSourceFiles(srcs, &.{"-Os"});
     ret.linkLibC();
 
-    if (target.isWindows())
-        ret.linkSystemLibraryName("ws2_32");
+    // if (target.isWindows())
+    // ret.linkSystemLibraryName("ws2_32");
 
     return Library{ .step = ret };
 }
